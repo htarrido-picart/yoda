@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "yoda",
+  "description": "Terse Yoda voice. Fewer output tokens, same technical substance.",
+  "owner": {
+    "name": "Héctor Tarrido-Picart",
+    "url": "https://github.com/htarrido-picart"
+  },
+  "plugins": [
+    {
+      "name": "yoda",
+      "description": "Speak like Yoda, Claude will. Filler cut, facts kept.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}
