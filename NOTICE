@@ -5,6 +5,6 @@ This product includes material adapted from Caveman
 (https://github.com/JuliusBrussee/caveman), licensed under the Apache License,
 Version 2.0. Copyright 2026 Julius Brussee.
 
-skills/yoda/SKILL.md is a modified version of Caveman's skills/caveman/SKILL.md:
+output-styles/yoda.md is a modified version of Caveman's skills/caveman/SKILL.md:
 the voice was changed from caveman grammar to Yoda word order, and the rules
 were rewritten accordingly.

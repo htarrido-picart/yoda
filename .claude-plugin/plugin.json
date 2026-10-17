@@ -1,7 +1,7 @@
 {
   "name": "yoda",
-  "version": "0.1.0",
-  "description": "Terse Yoda voice for Claude's replies. Cuts filler to save output tokens; code, commands, paths and errors stay verbatim.",
+  "version": "0.2.0",
+  "description": "Terse Yoda-voice replies for Claude Code. Cuts filler to save output tokens; code, commands, paths and errors stay verbatim.",
   "author": {
     "name": "Héctor Tarrido-Picart",
     "url": "https://github.com/htarrido-picart"
@@ -16,17 +16,6 @@
     "yoda"
   ],
   "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "command -v python3 >/dev/null 2>&1 || exit 0; python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/yoda.py\" session-start",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
     "SubagentStart": [
       {
         "hooks": [
