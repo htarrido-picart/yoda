@@ -1,6 +1,6 @@
 {
   "name": "yoda",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Terse Yoda-voice replies for Claude Code. Cuts filler to save output tokens; code, commands, paths and errors stay verbatim.",
   "author": {
     "name": "Héctor Tarrido-Picart",

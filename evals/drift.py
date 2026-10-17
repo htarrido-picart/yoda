@@ -41,25 +41,33 @@ def ask(prompt, session_id, use_plugin, cwd):
         cmd += ["--plugin-dir", str(PLUGIN_DIR)]
     out = subprocess.run(cmd, capture_output=True, text=True, cwd=cwd, check=True).stdout
     data = json.loads(out)
-    return data["session_id"], data["usage"]["output_tokens"], len(data["result"].split())
+    return data["session_id"], data["usage"]["output_tokens"], data["result"]
 
 
-def run(turns, use_plugin):
+def run(turns, use_plugin, replies):
     rows, session_id = [], None
     # An empty directory keeps project files and CLAUDE.md out of the conversation.
     with tempfile.TemporaryDirectory() as cwd:
         for prompt in PROMPTS[:turns]:
-            session_id, tokens, words = ask(prompt, session_id, use_plugin, cwd)
-            rows.append((tokens, words))
+            session_id, tokens, text = ask(prompt, session_id, use_plugin, cwd)
+            rows.append((tokens, len(text.split())))
+            replies.append(text)
     return rows
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--turns", type=int, default=10, choices=range(1, len(PROMPTS) + 1))
-    turns = parser.parse_args().turns
+    parser.add_argument("--show", action="store_true", help="print the replies with the plugin")
+    args = parser.parse_args()
+    turns = args.turns
 
-    base, yoda = run(turns, False), run(turns, True)
+    yoda_replies = []
+    base, yoda = run(turns, False, []), run(turns, True, yoda_replies)
+
+    if args.show:
+        for i, (prompt, reply) in enumerate(zip(PROMPTS, yoda_replies), 1):
+            print(f"--- turn {i}: {prompt}\n{reply}\n")
 
     print(f"{'turn':>4}  {'base tok':>8}  {'yoda tok':>8}  {'base words':>10}  {'yoda words':>10}")
     for i, ((bt, bw), (yt, yw)) in enumerate(zip(base, yoda), 1):

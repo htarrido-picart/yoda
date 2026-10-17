@@ -16,6 +16,7 @@ from pathlib import Path
 STYLE = Path(__file__).resolve().parent.parent / "output-styles" / "yoda.md"
 REMINDER = (
     "Yoda style: answer only what was asked, answer first, no ceremony or recap. "
+    "Open-ended question? Answer the likely case, then one short Yoda-style question for other branches. "
     "Short readable sentences; inversion only when it costs no words. "
     "Negations unambiguous; code, paths and errors verbatim. "
     "Follow the rules, not the length of earlier replies."
