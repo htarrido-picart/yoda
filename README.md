@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/mascot.svg" width="176" alt="A small green pixel-art creature with long ears, a brown robe and a walking stick">
+</p>
+
 # yoda
 
 A Claude Code plugin that makes Claude's replies terse and in Yoda's voice. Fewer output tokens per reply. Code, commands, paths and errors stay exactly as they are.
